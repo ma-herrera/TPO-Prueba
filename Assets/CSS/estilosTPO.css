@@ -6,6 +6,8 @@
     --font-family: 'Work Sans', sans-serif;
     --font-size: 0.1rem+5%;
 
+    --banner-height: 100px;
+
     /* --header-h1-font-family: 'EB Garamond', serif;
     --header-h1-font-size: 3rem;
 
@@ -58,6 +60,7 @@ header nav ul {
 nav a {
     /* text-decoration: none; */
     color: var(--link-color);
+    transition-duration: 0.3s;
 }
 
 nav a:hover {
@@ -71,7 +74,7 @@ nav a:hover {
     flex-direction: row;  */
 
 
-    height: 100px;
+    height: var(--banner-height);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -82,21 +85,22 @@ nav a:hover {
 
 /************************ Menu hamburguesa ***************************/
 .btn-hamburguesa {
-    /* display: none; */ /* descomentar para que no se muestre en pantallas anchas */
     color: var(--link-color);
     padding: 3px;
     border: none;
     /* color:darksalmon; */
     background-color: var(--banner-bg-color); 
+    transition-duration: 0.3s;
     cursor: pointer;
 }
 
 .btn-hamburguesa:hover {
-    /* display: none; */ /* descomentar para que no se muestre en pantallas anchas */
     color:rgb(196, 81, 43);
 }
 
-
+#menu-check {
+    display: none;
+}
 
 /* DESKTOP */
 @media only screen and (min-width: 768px){
@@ -105,8 +109,6 @@ nav a:hover {
         display: none;
     }
     header nav{
-        /* width: 100%; */
-        /* max-width: 100vw; */
         position: sticky;
         top: 0%;
         left: 0%;
@@ -127,25 +129,50 @@ nav a:hover {
 /* TABLET */
 @media only screen and (max-width: 767.90px) {
 
+    /*
+    VERSION1
+    lo ubicamos debajo del banner
+    oculto a la derecha de la ventana
+    */
     header nav{
-        width: 100%;
         height: 100vh;
         top: var(--banner-height);
-        /* max-width: 100vw; */
         position: fixed;
-        /* display: block; */
-        top: 100px;
-        left: 0%;
+        right: -100%;
         z-index: 1;
         margin: 10px; 
+        display: block;
+        transition: all 1s;
     }
+    input#menu-check:checked ~ nav {
+        right: 0;
+    }
+/* 
+    header nav{
+        height: 100vh;
+        top: var(--banner-height);
+        position: fixed;
+        right: 0%;
+        z-index: 1;
+        margin: 10px; 
+        display: none;
+        transition: all 1s;
+    } */
 
     header nav ul {
         -webkit-flex-direction: column;
         -ms-flex-direction: column;
         flex-direction: column;
         background-color: rgba(66, 37, 23, 0.582);
+        padding: 10px;
     } 
+
+/* CLICK EN EL MENU HAMBURGUESA -> MOSTRAR NAVBAR */
+/* 
+   input#menu-check:checked ~ nav {
+        display: block;
+    } */
+
 
 }
 
