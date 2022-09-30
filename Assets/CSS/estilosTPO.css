@@ -1,51 +1,94 @@
 /* Constantes */
 :root {
     --banner-bg-color: rgb(228, 211, 211);
+    --menu-bg-color: rgba(70, 7, 7, 0.9);
+    --main-bg-color: white;
+    --footer-bg-color:  rgb(228, 211, 211);
 
     --link-color: hsl(29, 73%, 61%);
     --hover-link-color: hsl(10, 73%, 61%);
     --active-link-color: hsl(10, 82%, 22%);
+    --link-font-size: 1rem;
     --box-shadow-color: rgba(70, 7, 7, 0.5);
+    --box-shadow-color2: rgba(70, 7, 7, 0.3);
 
     --font-family: 'Work Sans', sans-serif;
-    --font-size: 1 rem;
+    --font-size: 0.5rem;
 
     --header-font-family: 'EB Garamond', serif;
 
-    --banner-height: 100px;
-    --banner-padding: 10px;
-    --banner-total-height :120px;
+    /* --banner-height: 100px; */
+    --banner-height: calc( 100px + 1.2rem ) ;
+    /* --banner-padding: 10px; */
+    --banner-padding: 0 0.6rem 0;
+    /* --banner-total-height :105px; */
+    --banner-total-height :calc( var(--banner-height) + 0.6rem );
 
     --logo-height: 75px;
+
+    --html-min-width: 440px;
+    --footer-padding: 0rem 0.6rem 0rem;
+    --footer-total-height: 7.2rem;  /* verificar esta medida puesta asi nomas */
 }
 
 /* CSS RESET */
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html {
     font-family: var(--font-family);
     font-size: var(--font-size);
     box-sizing: border-box;
-    min-width: 440px;  /* restingimos el ancho mínimo para correcta visualizacion */
+    min-width: var(--html-min-width);  /* restingimos el ancho mínimo para correcta visualizacion */
+    transition: all 0.3s;
 }
+
+
+/* icono home google fonts */
+/* .material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+  } */
+
 
 header {
     width: 100%;
     font-family: var(--header-font-family);
-    line-height: calc(var(--banner-height) - 75px);
+    /* line-height: calc(var(--banner-height) - var(--logo-height)); */
 }
 
-
-.logo {
+/* PRUEBA .logo {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 1;
+} */
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 2em;
+    align-items: center;
+    z-index: 1;
+    height: var(--logo-height);
+}    
+
+a img {
+    vertical-align: middle;
 }
+
+a span {
+    vertical-align: middle;
+}
+
 
 .logo p {
     color: brown;
@@ -55,7 +98,7 @@ header {
 	display: flex;
     justify-content:flex-start; 
     align-items: center;
-    gap: 0.8rem;
+    gap: 0.3rem;
     flex-wrap: wrap;
     list-style-type: none;
 } 
@@ -64,6 +107,16 @@ nav a {
     color: var(--link-color);
     transition-duration: 0.3s;
     text-decoration: none;
+    font-size: var(--link-font-size);
+    /* align-items: center; */
+    
+}
+
+nav .material-symbols-outlined {
+    color: red; /*var(--link-color);*/
+    font-size: var(--link-font-size);
+    /* width: auto; */
+    /* font-size: 1.5rem; */
 }
 
 nav a:hover {
@@ -81,8 +134,12 @@ nav a:active {
     justify-content: space-between;
     align-items: center;
     background-color: var(--banner-bg-color);
-    box-shadow: 0 3px 5px var(--box-shadow-color);
+    /* box-shadow: 0 0.4rem 0.3rem var(--box-shadow-color); */
+    /* box-shadow: 0 3px 5px var(--box-shadow-color); */
     padding: var(--banner-padding);
+    box-shadow: 0 0.3rem 0.3rem var(--box-shadow-color);
+    box-shadow: 0 0.6rem 0.5rem var(--box-shadow-color2);
+    margin: 0 0.6rem 0.8rem;
 }
 
 /************************ Menu hamburguesa ***************************/
@@ -92,6 +149,10 @@ nav a:active {
     border: none;
     background-color: var(--banner-bg-color); 
     transition-duration: 0.3s;
+}
+
+.btn-hamburguesa i {
+    font-size: 60px;
 }
 
 .btn-hamburguesa:hover {
@@ -106,10 +167,9 @@ nav a:active {
 
 /*+++++++++++++ MEDIA QUERYS ++++++++++++++*/
 
-/* CELULAR */
-@media only screen and (max-width: 439.90px) {
-
-    
+/* FORMATO POR DEFAULT: CELULAR */
+/* @media only screen and (max-width: 439.90px) { */
+ 
     /* ocultamos el menú de navegación a la derecha de la ventana */
     header nav{
         height: fit-content;
@@ -118,64 +178,28 @@ nav a:active {
         position: fixed;
         right: -100%;
         z-index: 1;
-        transition: all 1s;
-        background-color: red;
-    }
-
-    
+        transition-duration: 0.8s;
+        background-color: var(--menu-bg-color);
+    }    
 
     .navmenu {
         flex-direction: column;
-        background-color: rgba(66, 37, 23, 0.582);
         padding: 10px;
-        display: block;
         width: 100%;
-        align-items: center;
     }
 
     nav.mostrar {
         right: 0;
+        transition-duration: 0.8s;
     }
-}
-
-/* FIN CELULAR */
+/* } *//* FIN CELULAR */
 
 
 /* TABLET */
-/* @media only screen and (max-width: 767.90px) { */
-    @media only screen and (min-width: 440px) and (max-width: 767.90px) {
-    
-    /* ocultamos el menú de navegación a la derecha de la ventana */
-    header nav{
-        /* height: 100vh; */
-        /* width: 100%; */
-        height: fit-content;
-        width: fit-content;
-        top: var(--banner-total-height);
-        position: fixed;
-        right: -100%;
-        z-index: 1;
-        transition: all 1s;
-        background-color: blueviolet;
-    }
-
-    .navmenu {
-        flex-direction: column;
-        padding: 10px;
-        display: block;
-        width: 100%;
-        align-items: center;
-    }
-
-
-    nav.mostrar {
-        right: 0;
-    }
-
-
-    /* #menu-check:checked ~ ul{
-        right:0;
-    } */
+@media only screen and (min-width: 440px) and (max-width: 767.90px) {
+/* header nav {
+    background-color: red;
+} */
 }
 /* FIN TABLET */
 
@@ -185,7 +209,6 @@ nav a:active {
 
     .banner {
         /* height: var(--banner-height); */
-        /* display: flex; */
         justify-content:space-between;
         align-items: center;
         background-color: var(--banner-bg-color);
@@ -200,7 +223,6 @@ nav a:active {
         gap: 2em;
         align-items: center;
         z-index: 1;
-        /* width: 400px; */
         height: var(--logo-height);
     }    
 
@@ -214,7 +236,6 @@ nav a:active {
     }
 
     header nav{
-        /* height: 100vh; */
         width: fit-content;
         position: -webkit-sticky;
         position: sticky;
@@ -226,29 +247,98 @@ nav a:active {
     }	
 
     .navmenu {
+        gap: 0.8rem;
         flex-direction: row;
         background-color: var(--banner-bg-color);
         padding: 10px;
-        display: flex;
         width: fit-content;
-        align-items: center;
-        justify-content: flex-start;
     }
         
 }
-
-
-
-
-
+/* FIN DESKTOP */
 
 
 main {
     width: 100%;
-    height: 100vh;
-    background-color: rgba(55, 55, 88, 0.24);
+    height: auto;  /*RESTAR HEADER Y FOOTER */
+    min-height: calc(100vh - var(--banner-total-height) - var(--footer-total-height));
+    background-color: var(--main-bg-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around  ;
 }
 
+
+aside {
+    width: 20vw;
+    margin: 3rem 0 3rem 0;
+    background-color: aqua;
+    padding: var(--banner-padding);
+}
+
+
+.multiple-product-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    justify-content: space-evenly;
+}
+
+.single-product-container {
+    border: solid 2px black;
+    margin: 2vw;
+    padding: 2vw;
+    width: 30vw;
+    height: 15vw;    
+}
+
+.product-img {
+    background-color: aquamarine;
+    background-image: url("../Imagenes/BuenosAiresNocturna.jpg");
+    /* height: fit-content; */
+    width: 50%;
+    height: 100%; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    float: left;
+}
+
+.epigrafe {
+    width: 50%;
+    display: inline-block;
+    height: 100%;
+    overflow-y: scroll;
+    padding: 1em;
+    /* margin: 1em; */
+}
+
+
+.epigrafe p {
+    width: 100%;
+}
+
+
+footer {
+    width: calc(100vw - 1.2rem);
+    background-color: var(--footer-bg-color);
+    text-align: center;
+    font-weight: bold;
+    padding: var(--footer-padding);
+/* height: var(--footer-total-height); */
+    box-shadow: 0rem 0.3rem 0.3rem var(--box-shadow-color);
+    box-shadow: 0rem 0.6rem 0.5rem var(--box-shadow-color2);
+    margin: 0rem 0.6rem 0.5rem;
+    margin: 0 0.6rem 0.8rem;
+}
+
+/* iconos de redes sociales */
+footer a img {
+    height: 2rem;
+    margin: 0.5rem 1rem 1rem 1rem;
+    width: auto;
+}
 
 /*********** CODIGO AUXILIAR. BORRAR *****************/
     /* --header-h1-font-family: 'EB Garamond', serif;
