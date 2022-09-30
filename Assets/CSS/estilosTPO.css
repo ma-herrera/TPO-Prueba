@@ -28,8 +28,7 @@
 
     --html-min-width: 440px;
     --footer-padding: 0rem 0.6rem 0rem;
-    --footer-total-height: 7.2rem;  /* verificar esta medida puesta asi nomas */
-}
+    --footer-total-height: 7.2rem;
 
 /* CSS RESET */
 * {
@@ -62,14 +61,6 @@ header {
     font-family: var(--header-font-family);
     /* line-height: calc(var(--banner-height) - var(--logo-height)); */
 }
-
-/* PRUEBA .logo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-} */
 
 .logo {
     display: flex;
@@ -134,8 +125,6 @@ nav a:active {
     justify-content: space-between;
     align-items: center;
     background-color: var(--banner-bg-color);
-    /* box-shadow: 0 0.4rem 0.3rem var(--box-shadow-color); */
-    /* box-shadow: 0 3px 5px var(--box-shadow-color); */
     padding: var(--banner-padding);
     box-shadow: 0 0.3rem 0.3rem var(--box-shadow-color);
     box-shadow: 0 0.6rem 0.5rem var(--box-shadow-color2);
@@ -296,7 +285,6 @@ aside {
 .product-img {
     background-color: aquamarine;
     background-image: url("../Imagenes/BuenosAiresNocturna.jpg");
-    /* height: fit-content; */
     width: 50%;
     height: 100%; /* You must set a specified height */
     background-position: center; /* Center the image */
@@ -311,7 +299,6 @@ aside {
     height: 100%;
     overflow-y: scroll;
     padding: 1em;
-    /* margin: 1em; */
 }
 
 
