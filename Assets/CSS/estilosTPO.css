@@ -1,5 +1,15 @@
+/* TO DO */
+/*
+asignarle n minwidth a las cards.
+Para celular, colocar el aside encima de las cards
+Verificar el tamaño de las fuentes del footer con respecto a las del main
+
+*/
+
 /* Constantes */
 :root {
+    --html-min-width: 440px;
+
     --banner-bg-color: rgb(228, 211, 211);
     --menu-bg-color: rgba(70, 7, 7, 0.9);
     --main-bg-color: white;
@@ -14,24 +24,27 @@
 
     --font-family: 'Work Sans', sans-serif;
     --font-size: 0.5rem;
+    --font-size: 1rem;
 
     --header-font-family: 'EB Garamond', serif;
-
-    /* --banner-height: 100px; */
-    --banner-height: calc( 100px + 1.2rem ) ;
-    /* --banner-padding: 10px; */
-    --banner-padding: 0 0.6rem 0;
-    /* --banner-total-height :105px; */
-    --banner-total-height :calc( var(--banner-height) + 0.6rem );
-
     --logo-height: 75px;
 
-    --html-min-width: 440px;
-    --footer-padding: 0rem 0.6rem 0rem;
-    --footer-total-height: 7.2rem;
+    --box-shadow: 0rem 0.3rem 0.3rem var(--box-shadow-color), 0rem 0.6rem 0.5rem var(--box-shadow-color2);
 
+    --banner-padding: 0 0.6rem 0;
+    --banner-margin: 0 0.6rem 0.8rem;
+    /* banner-height= altura del logo + padding del banner + margin */
+    --banner-height: calc(var(--logo-height) + 0.8rem);
+
+    --social-icon-height: 2rem;
+    --social-icon-margin: 0rem 1rem 1rem 1rem;
+    --footer-padding: 1rem 0.6rem 1rem;
+    --footer-margin: 0 0.6rem 0.8rem;
+    /* footer-height= altura texto + altura iconos + margen iconos +footer padding + footer margin*/
+    --footer-height: calc(var(--font-size) + var(--social-icon-height) + 1rem + 2rem + 0.8rem);
+    
 }
-   
+
 /* CSS RESET */
 * {
     margin: 0;
@@ -48,20 +61,9 @@ html {
 }
 
 
-/* icono home google fonts */
-/* .material-symbols-outlined {
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 48
-  } */
-
-
 header {
     width: 100%;
     font-family: var(--header-font-family);
-    /* line-height: calc(var(--banner-height) - var(--logo-height)); */
 }
 
 .logo {
@@ -82,7 +84,6 @@ a span {
     vertical-align: middle;
 }
 
-
 .logo p {
     color: brown;
 }
@@ -100,16 +101,12 @@ nav a {
     color: var(--link-color);
     transition-duration: 0.3s;
     text-decoration: none;
-    font-size: var(--link-font-size);
-    /* align-items: center; */
-    
+    font-size: var(--link-font-size);    
 }
 
 nav .material-symbols-outlined {
-    color: red; /*var(--link-color);*/
+    color: var(--link-color);
     font-size: var(--link-font-size);
-    /* width: auto; */
-    /* font-size: 1.5rem; */
 }
 
 nav a:hover {
@@ -122,15 +119,13 @@ nav a:active {
 }
 
 .banner {
-    height: var(--banner-height);
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--banner-bg-color);
     padding: var(--banner-padding);
-    box-shadow: 0 0.3rem 0.3rem var(--box-shadow-color);
-    box-shadow: 0 0.6rem 0.5rem var(--box-shadow-color2);
-    margin: 0 0.6rem 0.8rem;
+    box-shadow: var(--box-shadow);
+    margin: var(--banner-margin);
 }
 
 /************************ Menu hamburguesa ***************************/
@@ -155,6 +150,9 @@ nav a:active {
     display: none;
 }
 
+body {
+    min-height: 100vh;
+}
 
 /*+++++++++++++ MEDIA QUERYS ++++++++++++++*/
 
@@ -165,7 +163,7 @@ nav a:active {
     header nav{
         height: fit-content;
         width: fit-content;
-        top: var(--banner-total-height);
+        top: var(--banner-height);    /*-total*/
         position: fixed;
         right: -100%;
         z-index: 1;
@@ -199,11 +197,10 @@ nav a:active {
 @media only screen and (min-width: 768px){
 
     .banner {
-        /* height: var(--banner-height); */
         justify-content:space-between;
         align-items: center;
         background-color: var(--banner-bg-color);
-        box-shadow: 0 3px 5px var(--box-shadow-color);
+        box-shadow: var(--box-shadow);
         padding: var(--banner-padding);
     }
 
@@ -217,6 +214,7 @@ nav a:active {
         height: var(--logo-height);
     }    
 
+    /*slogan*/
     .logo p {
         font-size: 1.3em;
         color: brown;
@@ -248,11 +246,13 @@ nav a:active {
 }
 /* FIN DESKTOP */
 
+/*------------------------- MAIN ------------------------*/
 
 main {
     width: 100%;
     height: auto;  /*RESTAR HEADER Y FOOTER */
-    min-height: calc(100vh - var(--banner-total-height) - var(--footer-total-height));
+    min-height: calc(100vh - (var(--banner-height)) - (var(--footer-height)));
+    /* min-height: calc(100vh - 134.2px); */
     background-color: var(--main-bg-color);
     display: flex;
     flex-direction: row;
@@ -266,7 +266,9 @@ aside {
     background-color: aqua;
     padding: var(--banner-padding);
 }
+/*------------------------- FIN MAIN ------------------------*/
 
+/*------------------------ PRODUCTOS -------------------------*/
 
 .multiple-product-container {
     display: flex;
@@ -288,7 +290,7 @@ aside {
     background-color: aquamarine;
     background-image: url("../Imagenes/BuenosAiresNocturna.jpg");
     width: 50%;
-    height: 100%; /* You must set a specified height */
+    height: 100%;
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
@@ -303,11 +305,12 @@ aside {
     padding: 1em;
 }
 
-
 .epigrafe p {
     width: 100%;
 }
+/*----------------------- FIN PRODUCTOS ------------------------*/
 
+/*--------------------------- FOOTER ----------------------------*/
 
 footer {
     width: calc(100vw - 1.2rem);
@@ -315,40 +318,15 @@ footer {
     text-align: center;
     font-weight: bold;
     padding: var(--footer-padding);
-/* height: var(--footer-total-height); */
-    box-shadow: 0rem 0.3rem 0.3rem var(--box-shadow-color);
-    box-shadow: 0rem 0.6rem 0.5rem var(--box-shadow-color2);
-    margin: 0rem 0.6rem 0.5rem;
-    margin: 0 0.6rem 0.8rem;
+    box-shadow:var(--box-shadow);
+    margin: var(--footer-margin);
 }
 
 /* iconos de redes sociales */
 footer a img {
-    height: 2rem;
-    margin: 0.5rem 1rem 1rem 1rem;
+    height: var(--social-icon-height);
+    margin: var(--social-icon-margin);
     width: auto;
 }
 
-/*********** CODIGO AUXILIAR. BORRAR *****************/
-    /* --header-h1-font-family: 'EB Garamond', serif;
-    --header-h1-font-size: 3rem;
-
-    --header-h2-font-family: 'EB Garamond', serif;
-    --header-h2-font-size: 2rem;
-    --header-h2-font-style: normal;
-    --header-h2-font-weight: 100; */
-
-
-/* 
-header h1 {
-    font-family: var(--header-h1-font-family);
-    font-size: var(--header-h1-font-size);
-}
-
-header h2 {
-    font-family: var(--header-h2-font-family);
-    font-size: var(--header-h2-font-size);
-    font-style: var(--header-h2-font-style);
-    font-weight: var(--header-h2-font-weight);
-    font-style: var(--header-h2-font-style);
-} */
+/*------------------------- FIN FOOTER --------------------------*/
