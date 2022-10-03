@@ -25,23 +25,25 @@ Verificar el tamaño de las fuentes del footer con respecto a las del main
     --font-family: 'Work Sans', sans-serif;
     --font-size: 0.5rem;
     --font-size: 1rem;
+    --footer-font-size: 0.7rem;
 
     --header-font-family: 'EB Garamond', serif;
     --logo-height: 75px;
 
-    --box-shadow: 0rem 0.3rem 0.3rem var(--box-shadow-color), 0rem 0.6rem 0.5rem var(--box-shadow-color2);
+    --box-shadow: 0rem 0rem 0.3rem var(--box-shadow-color), 0rem 0rem 0.5rem var(--box-shadow-color2);
 
     --banner-padding: 0 0.6rem 0;
-    --banner-margin: 0 0.6rem 0.8rem;
+    --banner-margin: 0 0rem 0.8rem 0;
     /* banner-height= altura del logo + padding del banner + margin */
     --banner-height: calc(var(--logo-height) + 0.8rem);
+    --banner-width: 100%;
 
     --social-icon-height: 2rem;
     --social-icon-margin: 0rem 1rem 1rem 1rem;
-    --footer-padding: 1rem 0.6rem 1rem;
-    --footer-margin: 0 0.6rem 0.8rem;
+    --footer-padding: 0.5rem 0.6rem 0.5rem;
+    /* --footer-margin: 0 0.6rem 0.8rem; */
     /* footer-height= altura texto + altura iconos + margen iconos +footer padding + footer margin*/
-    --footer-height: calc(var(--font-size) + var(--social-icon-height) + 1rem + 2rem + 0.8rem);
+    --footer-height: calc(var(--font-size) + var(--social-icon-height) + 1rem + 1rem + 0.8rem);
     
 }
 
@@ -61,8 +63,20 @@ html {
 }
 
 
+
+header, footer {
+    width: var(--banner-width);    
+    background-color: var(--banner-bg-color);
+    box-shadow: var(--box-shadow);
+    margin: var(--banner-margin);
+}
+
 header {
-    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--banner-padding);
     font-family: var(--header-font-family);
 }
 
@@ -118,16 +132,6 @@ nav a:active {
     color: var(--active-link-color);
 }
 
-.banner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--banner-bg-color);
-    padding: var(--banner-padding);
-    box-shadow: var(--box-shadow);
-    margin: var(--banner-margin);
-}
-
 /************************ Menu hamburguesa ***************************/
 .btn-hamburguesa {
     color: var(--link-color);
@@ -152,7 +156,109 @@ nav a:active {
 
 body {
     min-height: 100vh;
+    /* min-width: 100vw; */
 }
+/*------------------------- MAIN ------------------------*/
+main {
+    /* width: 100%; */
+    height: auto;
+    min-height: calc(100vh - (var(--banner-height)) - (var(--footer-height)));
+    background-color: var(--main-bg-color);
+    display: flex;
+    flex-direction: column-reverse;
+    /* justify-content: space-around; */
+    justify-content: flex-end;
+    align-items: center;
+    flex-basis: 96vw
+    /* align-content: center; */
+}
+.maincontent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* flex-basis: 96vw; */
+    /* margin: 0 2vw 0 2vw; */
+}
+
+
+main h1 {
+    
+    width: 96vw;
+}
+
+aside {
+    /* width: 20vw; */
+    width: 96vw;
+    /* margin: 1rem 2vw 1rem 2vw; */
+    background-color: aqua;
+    padding: var(--banner-padding);
+}
+/*------------------------- FIN MAIN ------------------------*/
+
+/*------------------------ PRODUCTOS -------------------------*/
+
+.multiple-product-container {
+    /* width: calc(100% - 4vw); */
+    margin: 0 2vw 0 2vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    /* justify-content: space-evenly; */
+}
+
+.single-product-container {
+    border: solid 2px black;
+    margin: 2vw;
+    padding: 2vw;
+    /* width: 60vw; */
+    height: 33vw;    
+}
+
+.product-img {
+    background-color: aquamarine;
+    background-image: url("../Imagenes/BuenosAiresNocturna.jpg");
+    width: 50%;
+    height: 100%;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    float: left;
+}
+
+.epigrafe {
+    width: 50%;
+    display: inline-block;
+    height: 100%;
+    overflow-y: scroll;
+    padding: 1em;
+}
+
+.epigrafe p {
+    width: 100%;
+}
+/*----------------------- FIN PRODUCTOS ------------------------*/
+
+/*--------------------------- FOOTER ----------------------------*/
+
+footer {
+    /* width: calc(100vw - 1.2rem); */
+    text-align: center;
+    font-weight: bold;
+    padding: var(--footer-padding);
+    font-size: var(--footer-font-size);
+}
+
+/* iconos de redes sociales */
+footer a img {
+    height: var(--social-icon-height);
+    margin: var(--social-icon-margin);
+    width: auto;
+}
+
+/*------------------------- FIN FOOTER --------------------------*/
+
 
 /*+++++++++++++ MEDIA QUERYS ++++++++++++++*/
 
@@ -242,91 +348,37 @@ body {
         padding: 10px;
         width: fit-content;
     }
-        
+
+    main {
+        flex-direction: row;
+    }
+
+    aside {
+        /* width: 20vw; */
+        width: 28vw;
+        margin: 3rem 2vw 3rem 0;
+        background-color: aqua;
+        padding: var(--banner-padding);
+    }
+
+    .multiple-product-container {
+        width: 70vw;
+        flex-direction: row;
+        flex-wrap: wrap;
+        /* justify-content: space-around; */
+        justify-content: space-evenly;
+        gap: 2vw;
+        /* pongo la restriccion de tamaño en el contenedor, en lugar de ponerlo en el contenido */
+    }
+    
+    .single-product-container {
+        border: solid 2px black;
+        margin: 2vw;
+        padding: 2vw;
+        width: 30vw;
+        height: 15vw;    
+    }
+
+
 }
 /* FIN DESKTOP */
-
-/*------------------------- MAIN ------------------------*/
-
-main {
-    width: 100%;
-    height: auto;  /*RESTAR HEADER Y FOOTER */
-    min-height: calc(100vh - (var(--banner-height)) - (var(--footer-height)));
-    /* min-height: calc(100vh - 134.2px); */
-    background-color: var(--main-bg-color);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around  ;
-}
-
-
-aside {
-    width: 20vw;
-    margin: 3rem 0 3rem 0;
-    background-color: aqua;
-    padding: var(--banner-padding);
-}
-/*------------------------- FIN MAIN ------------------------*/
-
-/*------------------------ PRODUCTOS -------------------------*/
-
-.multiple-product-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    justify-content: space-evenly;
-}
-
-.single-product-container {
-    border: solid 2px black;
-    margin: 2vw;
-    padding: 2vw;
-    width: 30vw;
-    height: 15vw;    
-}
-
-.product-img {
-    background-color: aquamarine;
-    background-image: url("../Imagenes/BuenosAiresNocturna.jpg");
-    width: 50%;
-    height: 100%;
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
-    float: left;
-}
-
-.epigrafe {
-    width: 50%;
-    display: inline-block;
-    height: 100%;
-    overflow-y: scroll;
-    padding: 1em;
-}
-
-.epigrafe p {
-    width: 100%;
-}
-/*----------------------- FIN PRODUCTOS ------------------------*/
-
-/*--------------------------- FOOTER ----------------------------*/
-
-footer {
-    width: calc(100vw - 1.2rem);
-    background-color: var(--footer-bg-color);
-    text-align: center;
-    font-weight: bold;
-    padding: var(--footer-padding);
-    box-shadow:var(--box-shadow);
-    margin: var(--footer-margin);
-}
-
-/* iconos de redes sociales */
-footer a img {
-    height: var(--social-icon-height);
-    margin: var(--social-icon-margin);
-    width: auto;
-}
-
-/*------------------------- FIN FOOTER --------------------------*/
