@@ -4,7 +4,6 @@ const burger = document.querySelector('#menu-check');
 /* mueve el menú fuera del viewport */
 function hideMenu() {
     burger.setAttribute('checked', 'false');
-    n.setAttribute("right", "-100%");
     n.classList.remove("mostrar");
 }
 
