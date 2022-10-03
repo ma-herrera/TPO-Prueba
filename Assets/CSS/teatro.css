@@ -1,0 +1,367 @@
+/* Constantes */
+:root {
+    --html-min-width: 440px;
+
+    --banner-bg-color: rgb(228, 211, 211);
+    --menu-bg-color: rgba(70, 7, 7, 0.9);
+    --main-bg-color: white;
+    --footer-bg-color:  rgb(228, 211, 211);
+
+    --link-color: hsl(29, 73%, 61%);
+    --hover-link-color: hsl(10, 73%, 61%);
+    --active-link-color: hsl(10, 82%, 22%);
+    --link-font-size: 1rem;
+    --box-shadow-color: rgba(70, 7, 7, 0.5);
+    --box-shadow-color2: rgba(70, 7, 7, 0.3);
+
+    --font-family: 'Work Sans', sans-serif;
+    --font-size: 0.5rem;
+    --font-size: 1rem;
+    --footer-font-size: 0.7rem;
+
+    --header-font-family: 'EB Garamond', serif;
+    --logo-height: 75px;
+
+    --box-shadow: 0rem 0rem 0.3rem var(--box-shadow-color), 0rem 0rem 0.5rem var(--box-shadow-color2);
+
+    --banner-padding: 0 0.6rem 0;
+    --banner-margin: 0 0rem 0.8rem 0;
+    /* banner-height= altura del logo + padding del banner + margin */
+    --banner-height: calc(var(--logo-height) + 0.8rem);
+    --banner-width: 100%;
+
+    --aside-padding: 0.6rem;
+
+    --social-icon-height: 2rem;
+    --social-icon-margin: 0rem 1rem 1rem 1rem;
+    --footer-padding: 0.5rem 0.6rem 0.5rem;
+    /* --footer-margin: 0 0.6rem 0.8rem; */
+    /* footer-height= altura texto + altura iconos + margen iconos +footer padding + footer margin*/
+    --footer-height: calc(var(--font-size) + var(--social-icon-height) + 1rem + 1rem + 0.8rem);
+
+    --main-min-height: calc(100vh - (var(--banner-height)) - (var(--footer-height)));
+
+}
+
+/* CSS RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    /* box-sizing: border-box; */
+    min-width: var(--html-min-width);  /* restingimos el ancho mínimo para correcta visualizacion */
+    transition: all 0.3s;
+}
+
+header, footer {
+    width: var(--banner-width);    
+    background-color: var(--banner-bg-color);
+    box-shadow: var(--box-shadow);
+    margin: var(--banner-margin);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--banner-padding);
+    font-family: var(--header-font-family);
+}
+
+.logo {
+    /* gap: 2em; */
+    align-items: center;
+    z-index: 1;
+    height: var(--logo-height);
+}    
+
+.logo p {
+    color: brown;
+    display: inline-block;
+    margin-left: 0.8em;
+}
+
+a img, a span {
+    vertical-align: middle;
+}
+
+
+.navmenu { 
+	display: flex;
+    justify-content:flex-start; 
+    align-items: center;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+    list-style-type: none;
+} 
+
+nav a, nav .material-symbols-outlined {
+    color: var(--link-color);
+    font-size: var(--link-font-size);    
+}
+
+nav a {
+    transition-duration: 0.3s;
+    text-decoration: none;
+}
+
+
+nav a:hover {
+    color: var(--hover-link-color);
+    cursor: pointer;
+}
+
+nav a:active {
+    color: var(--active-link-color);
+}
+
+/************************ Menu hamburguesa ***************************/
+.btn-hamburguesa {
+    color: var(--link-color);
+    padding: 3px;
+    border: none;
+    background-color: var(--banner-bg-color); 
+    transition-duration: 0.3s;
+}
+
+.btn-hamburguesa i {
+    font-size: 60px;
+}
+
+
+.btn-hamburguesa:hover {
+    color: var(--hover-link-color);
+    cursor: pointer;
+}
+
+#menu-check {
+    display: none;
+}
+
+body {
+    min-height: 100vh;
+}
+/*------------------------- MAIN ------------------------*/
+main {
+    left: 2vw;
+    height: auto;
+    min-height: var(--main-min-height);
+    background-color: var(--main-bg-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+}
+
+.maincontent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+main h1 {    
+    text-align: center;
+}
+
+aside {
+    width: 90%;
+    margin: 1rem 0vw 1rem 0vw;
+    background-color: var(--banner-bg-color);
+    padding: var(--banner-padding);
+    font-size: 0.5rem;
+    border: solid 2px black;
+    border: none;
+}
+/*------------------------- FIN MAIN ------------------------*/
+
+/*------------------------ PRODUCTOS -------------------------*/
+
+.multiple-product-container {
+    /* margin: 0 2vw 0 2vw; */
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.single-product-container {
+    border: solid 2px black;
+    margin: 2vw;
+    padding: 2vw;
+    height: calc((100vw - 4vw ) / 2);    
+}
+
+.product-img {
+    background-color: aquamarine;
+    background-image: url("../Imagenes/BuenosAiresNocturna.jpg");
+    width: 50%;
+    height: 100%;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    float: left;
+}
+
+.epigrafe {
+    width: 50%;
+    display: inline-block;
+    height: 100%;
+    overflow-y: scroll;
+    padding: 0.5rem;
+    font-size: 0.5rem;
+}
+
+.epigrafe p {
+    width: 100%;
+}
+/*----------------------- FIN PRODUCTOS ------------------------*/
+
+/*--------------------------- FOOTER ----------------------------*/
+
+footer {
+    text-align: center;
+    font-weight: bold;
+    padding: var(--footer-padding);
+    font-size: var(--footer-font-size);
+}
+
+/* iconos de redes sociales */
+footer a img {
+    height: var(--social-icon-height);
+    margin: var(--social-icon-margin);
+}
+
+/*------------------------- FIN FOOTER --------------------------*/
+
+
+/*+++++++++++++ MEDIA QUERYS ++++++++++++++*/
+
+/* FORMATO POR DEFAULT: CELULAR */
+/* @media only screen and (max-width: 439.90px) { */
+ 
+    /* ocultamos el menú de navegación a la derecha de la ventana */
+    header nav{
+        /* height: fit-content; */
+        /*width: fit-content; */
+        height: var(--main-min-height);
+        width: 100%;
+        top: var(--banner-height);    /*-total*/
+        position: fixed;
+        right: -100%;
+        z-index: 1;
+        transition-duration: 0.8s;
+        background-color: var(--menu-bg-color);
+        font-size: 2rem;
+    }    
+
+    .navmenu {
+        flex-direction: column;
+        padding: 10px;
+        width: 100%;
+    }
+
+    nav.mostrar {
+        right: 0;
+        transition-duration: 0.8s;
+    }
+/* } *//* FIN CELULAR */
+
+
+/* TABLET */
+@media only screen and (min-width: 440px) and (max-width: 767.90px) {
+/* header nav {
+    background-color: red;
+} */
+}
+/* FIN TABLET */
+
+
+/* DESKTOP */
+@media only screen and (min-width: 768px){
+
+    .banner {
+        justify-content:space-between;
+        align-items: center;
+        background-color: var(--banner-bg-color);
+        box-shadow: var(--box-shadow);
+        padding: var(--banner-padding);
+    }
+
+    .logo {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 2em;
+        align-items: center;
+        z-index: 1;
+        height: var(--logo-height);
+    }    
+
+    /*slogan*/
+    .logo p {
+        font-size: 1.3em;
+        color: brown;
+    }
+
+    .btn-hamburguesa {
+        display: none;
+    }
+
+    header nav{
+        width: fit-content;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0%;
+        left: 0%;
+        z-index: 1;
+        margin: 10px;
+        justify-content: space-between;
+        height: fit-content;
+        font-size: 1rem;
+    }	
+
+    .navmenu {
+        gap: 0.8rem;
+        flex-direction: row;
+        background-color: var(--banner-bg-color);
+        padding: 10px;
+        width: fit-content;
+        width: fit-content;
+    }
+/*----------------- MAIN DESKTOP ------------------*/
+    main {
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 1.5%;
+        width: 100%;
+    }
+
+.maincontent {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+}
+
+
+/****************************************/
+
+    aside {
+        width: 19%;
+        margin: 0 0%  1% 1%;
+        background-color: var(--banner-bg-color) ;
+        padding: var(--aside-padding);
+        /* border-left: solid 1px black; */
+    }
+}
+/* FIN DESKTOP */
