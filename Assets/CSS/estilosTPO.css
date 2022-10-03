@@ -46,7 +46,9 @@ Verificar el tamaño de las fuentes del footer con respecto a las del main
     /* --footer-margin: 0 0.6rem 0.8rem; */
     /* footer-height= altura texto + altura iconos + margen iconos +footer padding + footer margin*/
     --footer-height: calc(var(--font-size) + var(--social-icon-height) + 1rem + 1rem + 0.8rem);
-    
+
+    --main-min-height: calc(100vh - (var(--banner-height)) - (var(--footer-height)));
+
 }
 
 /* CSS RESET */
@@ -59,7 +61,7 @@ Verificar el tamaño de las fuentes del footer con respecto a las del main
 html {
     font-family: var(--font-family);
     font-size: var(--font-size);
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     min-width: var(--html-min-width);  /* restingimos el ancho mínimo para correcta visualizacion */
     transition: all 0.3s;
 }
@@ -80,26 +82,22 @@ header {
 }
 
 .logo {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 2em;
+    /* gap: 2em; */
     align-items: center;
     z-index: 1;
     height: var(--logo-height);
 }    
 
-a img {
-    vertical-align: middle;
-}
-
-a span {
-    vertical-align: middle;
-}
-
 .logo p {
     color: brown;
+    display: inline-block;
+    margin-left: 0.8em;
 }
+
+a img, a span {
+    vertical-align: middle;
+}
+
 
 .navmenu { 
 	display: flex;
@@ -116,16 +114,10 @@ nav a, nav .material-symbols-outlined {
 }
 
 nav a {
-    /* color: var(--link-color); */
     transition-duration: 0.3s;
     text-decoration: none;
-    /* font-size: var(--link-font-size);     */
 }
-/* 
-nav .material-symbols-outlined {
-    color: var(--link-color);
-    font-size: var(--link-font-size);
-} */
+
 
 nav a:hover {
     color: var(--hover-link-color);
@@ -160,19 +152,18 @@ nav a:active {
 
 body {
     min-height: 100vh;
-    /* min-width: 100vw; */
 }
 /*------------------------- MAIN ------------------------*/
 main {
-    /* width: 100%; */
+    left: 2vw;
     height: auto;
-    min-height: calc(100vh - (var(--banner-height)) - (var(--footer-height)));
+    min-height: var(--main-min-height);
     background-color: var(--main-bg-color);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 96vw;
+    width: 100vw;
 }
 
 .maincontent {
@@ -181,16 +172,13 @@ main {
     justify-content: center;
     align-items: center;
     width: 100%;
-    /* flex-basis: 96vw; */
-    /* margin: 0 2vw 0 2vw; */
 }
 
-/* main h1 {    
-    width: 96vw;
-} */
+main h1 {    
+    text-align: center;
+}
 
 aside {
-    /* width: 20vw; */
     width: 90%;
     margin: 1rem 0vw 1rem 0vw;
     background-color: var(--banner-bg-color);
@@ -204,7 +192,8 @@ aside {
 /*------------------------ PRODUCTOS -------------------------*/
 
 .multiple-product-container {
-    margin: 0 2vw 0 2vw;
+    /* margin: 0 2vw 0 2vw; */
+    justify-content: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -214,7 +203,7 @@ aside {
     border: solid 2px black;
     margin: 2vw;
     padding: 2vw;
-    height: 33vw;    
+    height: calc((100vw - 4vw ) / 2);    
 }
 
 .product-img {
@@ -245,7 +234,6 @@ aside {
 /*--------------------------- FOOTER ----------------------------*/
 
 footer {
-    /* width: calc(100vw - 1.2rem); */
     text-align: center;
     font-weight: bold;
     padding: var(--footer-padding);
@@ -256,7 +244,6 @@ footer {
 footer a img {
     height: var(--social-icon-height);
     margin: var(--social-icon-margin);
-    width: auto;
 }
 
 /*------------------------- FIN FOOTER --------------------------*/
@@ -269,14 +256,17 @@ footer a img {
  
     /* ocultamos el menú de navegación a la derecha de la ventana */
     header nav{
-        height: fit-content;
-        width: fit-content;
+        /* height: fit-content; */
+        /*width: fit-content; */
+        height: var(--main-min-height);
+        width: 100%;
         top: var(--banner-height);    /*-total*/
         position: fixed;
         right: -100%;
         z-index: 1;
         transition-duration: 0.8s;
         background-color: var(--menu-bg-color);
+        font-size: 2rem;
     }    
 
     .navmenu {
@@ -341,6 +331,8 @@ footer a img {
         z-index: 1;
         margin: 10px;
         justify-content: space-between;
+        height: fit-content;
+        font-size: 1rem;
     }	
 
     .navmenu {
@@ -348,6 +340,7 @@ footer a img {
         flex-direction: row;
         background-color: var(--banner-bg-color);
         padding: 10px;
+        width: fit-content;
         width: fit-content;
     }
 /*----------------- MAIN DESKTOP ------------------*/
@@ -371,12 +364,11 @@ footer a img {
 /****************************************/
 
     aside {
-        /* width: 20vw; */
         width: 19%;
         margin: 0 0%  1% 1%;
         background-color: var(--banner-bg-color) ;
         padding: var(--aside-padding);
-        border-left: solid 1px black;
+        /* border-left: solid 1px black; */
     }
 
     .multiple-product-container {
