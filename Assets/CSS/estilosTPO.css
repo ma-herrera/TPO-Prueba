@@ -38,6 +38,8 @@ Verificar el tamaño de las fuentes del footer con respecto a las del main
     --banner-height: calc(var(--logo-height) + 0.8rem);
     --banner-width: 100%;
 
+    --aside-padding: 0.6rem;
+
     --social-icon-height: 2rem;
     --social-icon-margin: 0rem 1rem 1rem 1rem;
     --footer-padding: 0.5rem 0.6rem 0.5rem;
@@ -62,8 +64,6 @@ html {
     transition: all 0.3s;
 }
 
-
-
 header, footer {
     width: var(--banner-width);    
     background-color: var(--banner-bg-color);
@@ -72,7 +72,6 @@ header, footer {
 }
 
 header {
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -111,17 +110,22 @@ a span {
     list-style-type: none;
 } 
 
-nav a {
+nav a, nav .material-symbols-outlined {
     color: var(--link-color);
-    transition-duration: 0.3s;
-    text-decoration: none;
     font-size: var(--link-font-size);    
 }
 
+nav a {
+    /* color: var(--link-color); */
+    transition-duration: 0.3s;
+    text-decoration: none;
+    /* font-size: var(--link-font-size);     */
+}
+/* 
 nav .material-symbols-outlined {
     color: var(--link-color);
     font-size: var(--link-font-size);
-}
+} */
 
 nav a:hover {
     color: var(--hover-link-color);
@@ -165,54 +169,51 @@ main {
     min-height: calc(100vh - (var(--banner-height)) - (var(--footer-height)));
     background-color: var(--main-bg-color);
     display: flex;
-    flex-direction: column-reverse;
-    /* justify-content: space-around; */
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    flex-basis: 96vw
-    /* align-content: center; */
+    width: 96vw;
 }
+
 .maincontent {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
     /* flex-basis: 96vw; */
     /* margin: 0 2vw 0 2vw; */
 }
 
-
-main h1 {
-    
+/* main h1 {    
     width: 96vw;
-}
+} */
 
 aside {
     /* width: 20vw; */
-    width: 96vw;
-    /* margin: 1rem 2vw 1rem 2vw; */
-    background-color: aqua;
+    width: 90%;
+    margin: 1rem 0vw 1rem 0vw;
+    background-color: var(--banner-bg-color);
     padding: var(--banner-padding);
+    font-size: 0.5rem;
+    border: solid 2px black;
+    border: none;
 }
 /*------------------------- FIN MAIN ------------------------*/
 
 /*------------------------ PRODUCTOS -------------------------*/
 
 .multiple-product-container {
-    /* width: calc(100% - 4vw); */
     margin: 0 2vw 0 2vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
-    /* justify-content: space-evenly; */
 }
 
 .single-product-container {
     border: solid 2px black;
     margin: 2vw;
     padding: 2vw;
-    /* width: 60vw; */
     height: 33vw;    
 }
 
@@ -232,7 +233,8 @@ aside {
     display: inline-block;
     height: 100%;
     overflow-y: scroll;
-    padding: 1em;
+    padding: 0.5rem;
+    font-size: 0.5rem;
 }
 
 .epigrafe p {
@@ -348,35 +350,49 @@ footer a img {
         padding: 10px;
         width: fit-content;
     }
-
+/*----------------- MAIN DESKTOP ------------------*/
     main {
         flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 1.5%;
+        width: 100%;
     }
+
+.maincontent {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+}
+
+
+/****************************************/
 
     aside {
         /* width: 20vw; */
-        width: 28vw;
-        margin: 3rem 2vw 3rem 0;
-        background-color: aqua;
-        padding: var(--banner-padding);
+        width: 19%;
+        margin: 0 0%  1% 1%;
+        background-color: var(--banner-bg-color) ;
+        padding: var(--aside-padding);
+        border-left: solid 1px black;
     }
 
     .multiple-product-container {
-        width: 70vw;
         flex-direction: row;
         flex-wrap: wrap;
-        /* justify-content: space-around; */
-        justify-content: space-evenly;
-        gap: 2vw;
-        /* pongo la restriccion de tamaño en el contenedor, en lugar de ponerlo en el contenido */
+        justify-content: flex-start;
+        row-gap: 1vw;
+        margin: 0 0vw 0 0vw;
     }
     
     .single-product-container {
-        border: solid 2px black;
-        margin: 2vw;
-        padding: 2vw;
-        width: 30vw;
-        height: 15vw;    
+        border: solid 1px black;
+        margin: 1vw 1vw 1vw 0;
+        padding: 1vw;
+        width: 36vw;
+        height: 18vw;    
     }
 
 
