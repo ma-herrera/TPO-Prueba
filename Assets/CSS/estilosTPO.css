@@ -1,8 +1,5 @@
 /* TO DO */
 /*
-asignarle n minwidth a las cards.
-Para celular, colocar el aside encima de las cards
-Verificar el tamaño de las fuentes del footer con respecto a las del main
 
 */
 
@@ -141,8 +138,9 @@ nav a:active {
     font-size: 60px;
 }
 
+
 .btn-hamburguesa:hover {
-    color:rgb(196, 81, 43);
+    color: var(--hover-link-color);
     cursor: pointer;
 }
 
