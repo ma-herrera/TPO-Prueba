@@ -5,11 +5,9 @@
 
 /* Constantes */
 :root {
-    --html-min-width: 440px;
-
     --banner-bg-color: rgb(228, 211, 211);
     --menu-bg-color: rgba(70, 7, 7, 0.9);
-    --main-bg-color: white;
+    --submenu-bg-color: rgba(51, 9, 9, 0.9);
     --footer-bg-color:  rgb(228, 211, 211);
 
     --link-color: hsl(29, 73%, 61%);
@@ -19,12 +17,11 @@
     --box-shadow-color: rgba(70, 7, 7, 0.5);
     --box-shadow-color2: rgba(70, 7, 7, 0.3);
 
-    --font-family: 'Work Sans', sans-serif;
-    --font-size: 0.5rem;
+    /* --font-family: 'Work Sans', sans-serif; */
     --font-size: 1rem;
     --footer-font-size: 0.7rem;
 
-    --header-font-family: 'EB Garamond', serif;
+    /* --header-font-family: 'EB Garamond', serif; */
     --logo-height: 75px;
 
     --box-shadow: 0rem 0rem 0.3rem var(--box-shadow-color), 0rem 0rem 0.5rem var(--box-shadow-color2);
@@ -35,8 +32,6 @@
     --banner-height: calc(var(--logo-height) + 0.8rem);
     --banner-width: 100%;
 
-    --aside-padding: 0.6rem;
-
     --social-icon-height: 2rem;
     --social-icon-margin: 0rem 1rem 1rem 1rem;
     --footer-padding: 0.5rem 0.6rem 0.5rem;
@@ -46,6 +41,15 @@
 
     --main-min-height: calc(100vh - (var(--banner-height)) - (var(--footer-height)));
 
+    /* valores globales */
+    --html-min-width: 440px;
+    --font-family: 'Work Sans', sans-serif;
+    --header-font-family: 'EB Garamond', serif;
+
+    /* main */
+    --aside-padding: 0.6rem;
+    --aside-bg-color: rgb(228, 211, 211);
+    --main-bg-color: white;
 }
 
 /* CSS RESET */
@@ -62,6 +66,11 @@ html {
     min-width: var(--html-min-width);  /* restingimos el ancho mínimo para correcta visualizacion */
     transition: all 0.3s;
 }
+
+ h1 {
+    /* font-style: italic; */
+    font-weight: 400;
+ }
 
 header, footer {
     width: var(--banner-width);    
@@ -95,14 +104,19 @@ a img, a span {
     vertical-align: middle;
 }
 
+ul {
+    list-style-type: none;
+}
 
-.navmenu { 
+
+/* .navmenu{  */
+/* nav > ul{  */
+nav > ul{ 
 	display: flex;
-    justify-content:flex-start; 
+    justify-content:flex-start;
     align-items: center;
     gap: 0.3rem;
     flex-wrap: wrap;
-    list-style-type: none;
 } 
 
 nav a, nav .material-symbols-outlined {
@@ -173,7 +187,7 @@ main {
     width: 100%;
 }
 
-main h1 {    
+.textAlignCenter {    
     text-align: center;
 }
 
@@ -203,12 +217,13 @@ aside {
     margin: 2vw;
     padding: 2vw;
     height: calc((100vw - 4vw ) / 2);
+    width: calc(100vw - 4vw );
     transition: all 0.3s;
 }
 
 .product-img {
     background-color: aquamarine;
-    background-image: url("../Imagenes/BuenosAiresNocturna.jpg");
+    /* background-image: url("../Imagenes/BuenosAiresNocturna.jpg"); */
     width: 50%;
     height: 100%;
     background-position: center; /* Center the image */
@@ -229,11 +244,12 @@ aside {
     font-size: 0.8rem;
 }
 
-
-
 .titulo {
     color: black;
     color: var(--link-color);
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    border-bottom: 2px black solid;
 }
 
 .epigrafe {
@@ -277,15 +293,17 @@ footer a img {
 
 /*+++++++++++++ MEDIA QUERYS ++++++++++++++*/
 
-/* FORMATO POR DEFAULT: CELULAR */
-/* @media only screen and (max-width: 439.90px) { */
+/* FORMATO POR DEFAULT: CELULAR -  @media only screen and (max-width: 439.90px) { */
  
     /* ocultamos el menú de navegación a la derecha de la ventana */
     header nav{
         /* height: fit-content; */
         /*width: fit-content; */
         height: var(--main-min-height);
+
         width: 100%;
+        width: 40%;
+
         top: var(--banner-height);    /*-total*/
         position: fixed;
         right: -100%;
@@ -299,12 +317,39 @@ footer a img {
         flex-direction: column;
         padding: 10px;
         width: 100%;
+        justify-content: center;
     }
 
     nav.mostrar {
         right: 0;
         transition-duration: 0.8s;
     }
+
+/* SUB-MENU */
+
+nav ul li ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background: var(--menu-bg-color);
+    right: 98%;
+    top: 10px;
+    /* padding-top: 5px; */
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    transition: all 0.3s;
+    gap: 0.3rem;
+    align-items: center;
+    background-color: brown;
+}
+
+nav ul li:hover ul {
+    visibility: visible;
+    opacity: 1;
+}
+
 /* } *//* FIN CELULAR */
 
 
@@ -332,7 +377,7 @@ footer a img {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        gap: 2em;
+        gap: 1em;
         align-items: center;
         z-index: 1;
         height: var(--logo-height);
@@ -348,7 +393,9 @@ footer a img {
         display: none;
     }
 
-    header nav{
+
+    /* MENU PRINCIPAL */
+    header > nav{
         width: fit-content;
         position: -webkit-sticky;
         position: sticky;
@@ -357,18 +404,86 @@ footer a img {
         z-index: 1;
         margin: 10px;
         justify-content: space-between;
-        height: fit-content;
+        /* height: fit-content; */
         font-size: 1rem;
+
+        /* align-items: center; */
+        height:  var(--banner-height);
     }	
 
     .navmenu {
+    /* nav > ul { */
         gap: 0.8rem;
         flex-direction: row;
         background-color: var(--banner-bg-color);
         padding: 10px;
+        padding-right: 0;
         width: fit-content;
-        width: fit-content;
+        /* align-items: center; */
+
+        /* position: relative; */
+
+
+        height: 100%;
     }
+
+
+nav > ul > li {
+    display: flex;
+    position: relative;
+
+    /* align-items: center; */
+        height: 100%;
+}
+
+
+    nav > ul > li > a {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        
+        align-items: center;
+        /* height: var(--logo-height); */
+    }
+
+/* SUB-MENU */
+
+nav ul li ul {
+    width: 200px;
+    right: -90%;
+    background: var(--menu-bg-color);
+    top: var(--banner-height) ;
+    padding: 14px;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    transition: all 0.3s;
+    gap: 1em;
+}
+
+
+
+/* 
+    nav ul li ul {
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        background: var(--menu-bg-color);
+        top: var(--banner-height);
+        padding: 14px;
+        visibility: hidden;
+        opacity: 0;
+        z-index: 1;
+        transition: all 0.3s;
+        gap: 1em;
+    }
+
+    nav ul li:hover ul {
+        visibility: visible;
+        opacity: 1;
+    } */
+
 /*----------------- MAIN DESKTOP ------------------*/
     main {
         flex-direction: row;
@@ -392,7 +507,7 @@ footer a img {
     aside {
         width: 19%;
         margin: 0 0%  1% 1%;
-        background-color: var(--banner-bg-color) ;
+        background-color: var(--aside-bg-color) ;
         padding: var(--aside-padding);
         /* border-left: solid 1px black; */
     }
@@ -403,6 +518,8 @@ footer a img {
         justify-content: flex-start;
         row-gap: 1vw;
         margin: 0 0vw 0 0vw;
+        /* prueba agrego wid */
+        /* width: 80vw; */
     }
     
     .single-product-container {
