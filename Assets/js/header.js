@@ -1,55 +1,47 @@
-// crear los tags que voy a usar
-// asignar las relaciones entre los tags
-
 const header = document.querySelector("header");
 header.innerHTML = 
-// `<header class="banner">                
 `<div class="logo">
     <a href="./index.html"><img src="./Assets/Imagenes/Recurso 5.svg" alt="Logo de Eleven viajes"  width="80 px" height="75px"></a>
     <p>El destino de tus sueños</p>
 </div>
 
-<input type="checkbox" unchecked id="menu-check">
-<label for="menu-check" class="btn-hamburguesa">
-    <i class="material-symbols-outlined menu-hamburguesa"> menu </i>
+
+<label class="btn-hamburguesa menu_hamburger">
+    <i class="material-symbols-outlined hamburger__img"> menu </i>
 </label>
-<nav >
-    <ul class="navmenu">
-        <li><a id="excursiones" href="">Excursiones</a>
-            <ul>
-                <li><a href="./teatro.html">Teatro</a></li>
-                <li><a href="./dummy.html">Estancia "La estrella"</a></li>
-                <li><a href="./dummy.html">Tigre</a></li>
-                <li><a href="./dummy.html">Tour gaucho</a></li>
+
+<nav>
+    <ul class="menu__links navul">
+
+        <li class="menu__item menu__item--show">
+            <a class="menu__link" id="excursiones">Excursiones</a>
+            <ul class="menu__nesting">
+                <li class="menu__inside">
+                    <a class="menu__link menu__link--inside" href="./teatro.html">Teatro</a>
+                </li>
+                <li class="menu__inside">
+                    <a class="menu__link menu__link--inside" href="./dummy.html">Estancia "La estrella"</a>
+                </li>
+                <li class="menu__inside">
+                    <a class="menu__link menu__link--inside" href="./dummy.html">Tigre</a>
+                </li>
+                <li class="menu__inside">
+                    <a class="menu__link menu__link--inside" href="./dummy.html">Tour gaucho</a>
+                </li>
             </ul>
         </li>
-        <li><a href="./formularioDeContacto.html">Contacto</a></li>
-        <li><a href="./dummy.html">Blog</a></li>
-        <li><a href="./index.html"><span class="material-symbols-outlined">home</span></a></li>
+
+        <li class='menu__item'>
+            <a class="menu__link" href="./formularioDeContacto.html">Contacto</a>
+        </li>
+
+        <li class='menu__item'>
+            <a class="menu__link" href="./blog.html">Blog</a>
+        </li>
+
+        <li class='menu__item'>
+            <a class="menu__link" href="./index.html"><span class="material-symbols-outlined">home</span></a>
+        </li>
     </ul>
 </nav>`
 
-
-// </header>`
-
-
-// backup del menu
-/* <li><a href="teatro.html">Teatro</a></li>
-<li><a href="dummy.html">Excursiones</a></li>
-<li><a href="nosotros.html">Nosotros</a></li>
-<li><a href="./formularioDeContacto.html">Contacto</a></li>
-<li><a href="dummy.html">Blog</a></li>
-<li><a href="./index.html"><span class="material-symbols-outlined">home</span></a></li> */
-
-
-
-/* <ul class="navmenu">
-<li><label for="excursiones">Excursiones</label></li>
-    <select name="excursiones" id="excursiones">
-        <option><a href="dummy.html">dummy</a> </option>
-
-    </select>
-<li><a href="./formularioDeContacto.html">Contacto</a></li>
-<li><a href="./dummy.html">Blog</a></li>
-<li><a href="./index.html"><span class="material-symbols-outlined">home</span></a></li>
-</ul> */

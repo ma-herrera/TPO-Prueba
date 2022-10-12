@@ -111,7 +111,9 @@ ul {
 
 /* .navmenu{  */
 /* nav > ul{  */
-nav > ul{ 
+/* parametros generales del menu */
+/* .navul{  */
+.menu__links{ 
 	display: flex;
     justify-content:flex-start;
     align-items: center;
@@ -124,12 +126,17 @@ nav a, nav .material-symbols-outlined {
     font-size: var(--link-font-size);    
 }
 
+
+.menu__item{
+    position: relative;
+}
+
 /* nav */
-a {
+/* a { */
+.menu__link {
     transition-duration: 0.3s;
     text-decoration: none;
 }
-
 
 nav a:hover {
     color: var(--hover-link-color);
@@ -153,15 +160,14 @@ nav a:active {
     font-size: 60px;
 }
 
-
 .btn-hamburguesa:hover {
     color: var(--hover-link-color);
     cursor: pointer;
 }
 
-#menu-check {
+/* #menu-check {
     display: none;
-}
+} */
 
 body {
     min-height: 100vh;
@@ -191,15 +197,42 @@ main {
     text-align: center;
 }
 
-aside {
+.asideTitle {
+    font-family: var(--header-font-family);
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: brown;
+}
+
+body main aside {
     width: 90%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
     margin: 1rem 0vw 1rem 0vw;
     background-color: var(--banner-bg-color);
-    padding: var(--banner-padding);
+    padding: 1%;
+    border: none;
+    height: auto;
+}
+.aside__content {
+    display: flex;
+    width: 100%;
+    margin: auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    padding: 1%;
     font-size: 0.5rem;
-    border: solid 2px black;
     border: none;
 }
+.aside__element {
+    width: 100%;
+    padding: 2%;
+    /* display: block; */
+}
+
+
 /*------------------------- FIN MAIN ------------------------*/
 
 /*------------------------ PRODUCTOS -------------------------*/
@@ -291,14 +324,12 @@ footer a img {
 /*------------------------- FIN FOOTER --------------------------*/
 
 
-/*+++++++++++++ MEDIA QUERYS ++++++++++++++*/
 
-/* FORMATO POR DEFAULT: CELULAR -  @media only screen and (max-width: 439.90px) { */
+/* FORMATO POR DEFAULT: CELULAR -  */
+
  
     /* ocultamos el menú de navegación a la derecha de la ventana */
     header nav{
-        /* height: fit-content; */
-        /*width: fit-content; */
         height: var(--main-min-height);
 
         width: 100%;
@@ -307,57 +338,135 @@ footer a img {
         top: var(--banner-height);    /*-total*/
         position: fixed;
         right: -100%;
+        /* right: 0%;  para probar lo pongo visible */
         z-index: 1;
-        transition-duration: 0.8s;
+        transition-duration: 0.3s;
         background-color: var(--menu-bg-color);
         font-size: 2rem;
     }    
 
-    .navmenu {
+    .menu__links {
         flex-direction: column;
         padding: 10px;
         width: 100%;
+        max-width: 40vw;
         justify-content: center;
     }
-
-    nav.mostrar {
-        right: 0;
-        transition-duration: 0.8s;
-    }
+   
 
 /* SUB-MENU */
 
-nav ul li ul {
+.menu__nesting {
     width: 100%;
+    width: 40vw;
     display: flex;
     flex-direction: column;
     position: absolute;
     background: var(--menu-bg-color);
-    right: 98%;
+    right: 20vw;
     top: 10px;
     /* padding-top: 5px; */
+    
     visibility: hidden;
     opacity: 0;
+    /* visibility: visible;
+    opacity: 1; */
+    
     z-index: 1;
     transition: all 0.3s;
     gap: 0.3rem;
     align-items: center;
-    background-color: brown;
+    background-color: rgb(165, 42, 42);
+box-shadow: var(--box-shadow);
 }
 
-nav ul li:hover ul {
-    visibility: visible;
-    opacity: 1;
+
+    nav.mostrar {
+        right: 0;
+        transition-duration: 0.3s;
+    }
+
+    .menu__item--show:hover > .menu__nesting {
+        visibility: visible;
+        opacity: 1;
+    }
+    
+    
+
+@media only screen and (max-width: 767.90px) {
+    header nav:before {
+        content:'';
+        width: 0;
+        height: 0;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-bottom: 15px solid var(--submenu-bg-color);
+        position: absolute;
+        top: -14px;
+        right: 43%;
+        right: 10%;
+    }
+    
+    .menu__nesting:after {
+        content:'';
+        width: 0;
+        height: 0;
+        border-left: 15px solid brown;
+        border-top: 12px solid transparent;
+        border-bottom: 12px solid transparent;
+        position: absolute;
+        top: 10%;
+        right: -14px;
+    }
 }
+
+
+
+/* .menu__item--active {
+    background-color: black;     
+    transition: 0.3s;
+}
+
+.menu__item--show{
+    background-color: antiquewhite ;
+} */
 
 /* } *//* FIN CELULAR */
 
+/*+++++++++++++ MEDIA QUERYS ++++++++++++++*/
 
 /* TABLET */
 @media only screen and (min-width: 440px) and (max-width: 767.90px) {
-/* header nav {
-    background-color: red;
-} */
+    body main aside {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        margin: 1rem 0vw 1rem 0vw;
+        background-color: var(--banner-bg-color);
+        padding: 1%;
+        border: none;
+        height: auto;
+    }
+    .aside__content {
+        display: flex;
+        width: 100%;
+        margin: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        /* margin: 1rem 0vw 1rem 0vw; */
+        padding: 1%;
+        font-size: 0.5rem;
+        border: none;
+        /* flex-grow: 40%; */
+    }
+    .aside__element {
+        width: 50%;
+        padding: 2%;
+        /* display: block; */
+    }
+
 }
 /* FIN TABLET */
 
@@ -394,7 +503,7 @@ nav ul li:hover ul {
     }
 
 
-    /* MENU PRINCIPAL */
+    /*--------------- MENU PRINCIPAL DESKTOP ---------------*/
     header > nav{
         width: fit-content;
         position: -webkit-sticky;
@@ -404,37 +513,25 @@ nav ul li:hover ul {
         z-index: 1;
         margin: 10px;
         justify-content: space-between;
-        /* height: fit-content; */
         font-size: 1rem;
-
-        /* align-items: center; */
         height:  var(--banner-height);
     }	
 
-    .navmenu {
-    /* nav > ul { */
+    .menu__links {
         gap: 0.8rem;
         flex-direction: row;
         background-color: var(--banner-bg-color);
         padding: 10px;
         padding-right: 0;
         width: fit-content;
-        /* align-items: center; */
-
-        /* position: relative; */
-
-
         height: 100%;
     }
 
-
-nav > ul > li {
-    display: flex;
-    position: relative;
-
-    /* align-items: center; */
+    nav > ul > li {
+        display: flex;
+        position: relative;
         height: 100%;
-}
+    }
 
 
     nav > ul > li > a {
@@ -446,31 +543,24 @@ nav > ul > li {
         /* height: var(--logo-height); */
     }
 
-/* SUB-MENU */
-
-nav ul li ul {
-    width: 200px;
-    right: -90%;
-    background: var(--menu-bg-color);
-    top: var(--banner-height) ;
-    padding: 14px;
-    visibility: hidden;
-    opacity: 0;
-    z-index: 1;
-    transition: all 0.3s;
-    gap: 1em;
-}
-
-
-
-/* 
-    nav ul li ul {
-        width: 200px;
-        display: flex;
-        flex-direction: column;
+    /*-------------- SUB-MENU DESKTOP -----------------*/
+    .menu__nesting:before {
+        content:'';
+        width: 0;
+        height: 0;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-bottom: 15px solid var(--submenu-bg-color);
         position: absolute;
+        top: -14px;
+        right: 43%;
+    }
+
+    .menu__nesting {
+        width: 200px;
+        right: -90%;
         background: var(--menu-bg-color);
-        top: var(--banner-height);
+        top: var(--banner-height) ;
         padding: 14px;
         visibility: hidden;
         opacity: 0;
@@ -479,10 +569,27 @@ nav ul li ul {
         gap: 1em;
     }
 
+
+    header nav:before, .menu__nesting:after {
+        content:'';
+        width: 0;
+        height: 0;
+        border-left: 0;
+        border-top: 0;
+        border-bottom: 0;
+    }
+
+
     nav ul li:hover ul {
         visibility: visible;
         opacity: 1;
-    } */
+    }
+
+    .mostrarSubmenu {
+        visibility: hidden;
+        opacity: 0;
+    }
+
 
 /*----------------- MAIN DESKTOP ------------------*/
     main {
@@ -493,24 +600,51 @@ nav ul li ul {
         width: 100%;
     }
 
-.maincontent {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    width: 80%;
-}
+    .maincontent {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 80%;
+    }
+
+/*----------------- ASIDE DESKTOP ------------------*/
 
 
-/****************************************/
-
-    aside {
+    body main aside {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
         width: 19%;
         margin: 0 0%  1% 1%;
         background-color: var(--aside-bg-color) ;
         padding: var(--aside-padding);
-        /* border-left: solid 1px black; */
+        height: fit-content;
+        font-size: 0.5rem;
+        border: none;
     }
+/*--------------------------------*/
+.aside__content {
+    display: flex;
+    width: 100%;
+    margin: auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    /* margin: 1rem 0vw 1rem 0vw; */
+    padding: 1%;
+    font-size: 0.5rem;
+    border: none;
+    /* flex-grow: 40%; */
+}
+.aside__element {
+    width: 100%;
+    padding: 2%;
+    /* display: block; */
+}
+
+
+/*--------------- CARDS DESKTOP ---------------*/
 
     .multiple-product-container {
         flex-direction: row;
@@ -534,8 +668,3 @@ nav ul li ul {
 }
 /* FIN DESKTOP */
 
-/* 
-<article class="single-product-container"> <!-- PRODUCTO UNITARIO -->
-<div class="product-img">
-</div>
-<div class="epigrafe"> */
